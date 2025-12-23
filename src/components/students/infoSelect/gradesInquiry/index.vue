@@ -3,11 +3,11 @@
   <el-card style="margin-top: 5px"><TableCard :grades="filterGrades"/></el-card>
 </template>
 <script setup lang="ts">
-import TableCard from "@/components/infoSelect/gradesInquiry/Item/tableCard.vue";
+import TableCard from "@/components/students/infoSelect/gradesInquiry/Item/tableCard.vue";
 import {useCourseStore} from "@/stores/useCourseStore.ts";
 import {ref, computed, reactive} from "vue";
 import type {getGradesResult, grade} from "@/stores/type/courseInfoType.ts";
-import Query from "@/components/infoSelect/gradesInquiry/Item/Query.vue";
+import Query from "@/components/students/infoSelect/gradesInquiry/Item/Query.vue";
 defineOptions({
   name: 'gradesInquiry',
 })
@@ -35,7 +35,7 @@ async function getGradesAll() {
   }
 }
 const filterGrades=computed(()=>{
-  return originalGrades .value.filter(item => {
+  return originalGrades.value.filter(item => {
     if (currentFilter.value.semester&&item.semester!==currentFilter.value.semester) {
       return false
     }

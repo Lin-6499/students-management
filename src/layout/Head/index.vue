@@ -1,7 +1,7 @@
 <template>
   <div class="setting">
-    <el-button type="default" style="border-radius: 10px">
-    <icon-svg name="layout" width="20px" height="20px" @click="userLogout"/>
+    <el-button type="default" style="border-radius: 10px" @click="logout">
+    <icon-svg name="layout" width="20px" height="20px" />
     </el-button>
   </div>
 </template>
@@ -12,7 +12,10 @@ import {ArrowDown} from "@element-plus/icons-vue";
 import IconSvg from "@/access/svg.vue";
 
 const stuInfoStore = useStuInfoStore();
-const {stuInfo,userLogout} = stuInfoStore
+const {userLogout} = stuInfoStore
+const logout = async () =>{
+  await userLogout();
+}
 </script>
 
 <style scoped>

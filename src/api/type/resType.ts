@@ -1,8 +1,21 @@
 export interface StuInfoData{
-  userInfo:userInfo,
+  userInfo:userStuInfo,
   counselorInfo: counselorInfo
 }
-export interface userInfo{
+export interface CslInfoData{
+  userInfO:userCslInfo
+}
+export interface userCslInfo{
+
+}
+export interface reqDifficulty{
+  user_id:string
+}
+export interface reqRecords{
+  user_id:string
+}
+
+export interface userStuInfo{
   id: number,
   user_id: number,
   username: string,
@@ -48,4 +61,10 @@ export interface loginReqData{
 export interface scheduleData{
   weekTime:number,
   semester:string
+}
+
+export interface reviewDifficultyData{
+  status:number,
+  review_at:string,
+  student_id:string
 }

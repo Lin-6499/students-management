@@ -9,7 +9,7 @@
               <Account/>
             </el-tab-pane>
             <el-tab-pane label="扫码登陆" name="second">
-              <img src="@/access/createqr.jfif" style="margin:10px 40px">
+              <img src="../../../access/createqr.jfif" style="margin:10px 40px">
             </el-tab-pane>
             <el-tab-pane label="统一认证" name="third"></el-tab-pane>
           </el-tabs>
@@ -20,7 +20,7 @@
 </template>
 <script setup lang="ts">
 import {ref,reactive} from "vue";
-import Account from "@/components/login/Item/account.vue";
+import Account from "@/components/students/login/Item/account.vue";
 
 const activeName = ref("account")
 </script>

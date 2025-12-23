@@ -1,15 +1,6 @@
 import {infoSelect, stuApplyList} from "@/router/MenuList.ts";
-
-export const createRoutes=[
-  {
-    path:'/login',
-    name:'Login',
-    component: () => import("@/components/login/login.vue"),
-    meta:{
-      title:'登陆',
-      hidden:true,
-    }
-  },
+// 学生路由
+export const studentsRoutes=[
   {
     path:'/',
     name:'Layout',
@@ -23,14 +14,34 @@ export const createRoutes=[
       {
         path: '/home',
         name:'Home',
-        component:()=>import("@/components/home/index.vue"),
+        component:()=>import("@/components/students/home/index.vue"),
         meta:{
           title:'首页',
+          hidden:false,
+        }
+      }
+    ]
+  },
+  {
+    path:'/info',
+    component:()=>import("@/layout/layout.vue"),
+    meta:{
+      title:'个人信息',
+      hidden:true,
+    },
+    children: [
+      {
+        path: "/info/user-info",
+        name: "User-Info",
+        component: ()=>import("@/components/students/infoSelect/infoCard/index.vue"),
+        meta:{
+          title: "学生卡片",
           hidden:false,
           roles:['student']
         }
       }
     ]
+
   },
   {
     path:'/apply',
@@ -38,7 +49,6 @@ export const createRoutes=[
     meta:{
       title:'学生申请',
       hidden:true,
-      roles:['student']
     },
     redirect:'/apply/self-study',
     children:
@@ -57,7 +67,6 @@ export const createRoutes=[
     meta:{
       title:'学生申请',
       hidden:true,
-      roles:['student']
     },
     redirect:'/apply/self-study',
     children:
@@ -72,3 +81,4 @@ export const createRoutes=[
   }
 
 ]
+// 辅导员路由

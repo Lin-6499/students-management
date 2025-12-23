@@ -32,7 +32,7 @@ const login = async ()=>{
     await router.push({path: redirect || '/'});
     ElNotification.success({
       title:"登陆成功！",
-      message:`欢迎回来${StuInfoStore.stuInfo.real_name}`
+      message:`欢迎回来${StuInfoStore.stuInfo.userInfo.real_name}`
     })
   }catch(err){
     console.log("err",err)

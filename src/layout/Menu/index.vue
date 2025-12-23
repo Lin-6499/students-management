@@ -19,30 +19,7 @@
   <el-menu :default-active="route.path">
     <List :routeList="routeList"/>
   </el-menu>
-<!--  菜单列表  -->
-<!--  <el-menu-->
-<!--    default-active="2"-->
-<!--    class="el-menu-vertical-demo"-->
-<!--  >-->
-<!--    <el-sub-menu index="1">-->
-<!--      <template #title>-->
-<!--        <span>学生申请</span>-->
-<!--      </template>-->
-<!--      <el-menu-item v-for="item in stuApplyList" :index="item.url" :key="'1-'+item.id" @click="toRouter">{{item.meta.title}}</el-menu-item>-->
-<!--    </el-sub-menu>-->
-<!--    <el-menu-item index="2">-->
-<!--      <template #title>-->
-<!--        <span>信息查询</span>-->
-<!--      </template>-->
 
-<!--    </el-menu-item>-->
-<!--    <el-menu-item index="3" disabled>-->
-
-<!--    </el-menu-item>-->
-<!--    <el-menu-item index="4">-->
-
-<!--    </el-menu-item>-->
-<!--  </el-menu>-->
 
 </template>
 
@@ -57,7 +34,7 @@ defineOptions({
 defineProps(['routeList'])
 const route = useRoute();
 const useStuInfo = useStuInfoStore();
-const {real_name,avatar,user_id} = useStuInfo.stuInfo
+const {real_name,avatar,user_id} = useStuInfo.stuInfo.userInfo
 
 </script>
 

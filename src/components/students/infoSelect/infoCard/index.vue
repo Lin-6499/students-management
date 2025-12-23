@@ -125,8 +125,8 @@ const RoleType ={
   counselor:"工号",
 }
 
-const userInfo = stuInfoStore.stuInfo;
-const counselorInfo = stuInfoStore.counselorInfo;
+const userInfo = stuInfoStore.stuInfo.userInfo;
+const counselorInfo = stuInfoStore.stuInfo.counselorInfo;
 const isAtSchool = userInfo.is_at_school?"在校":"走读"
 const nameToPinyin = pinyin(userInfo.username,{toneType:'none'})
 watch(root,()=>{

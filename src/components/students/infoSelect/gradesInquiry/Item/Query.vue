@@ -57,7 +57,7 @@
 <script setup lang="ts">
 import {reactive, ref} from 'vue'
 import {academicYear} from "@/utils/usually.ts";
-import {requestCourseList} from "@/api/infoSelect";
+import {requestCourseList} from "@/api/studentsAPI/index.ts";
 import {useStuInfoStore} from "@/stores/useStuInfoStore.ts";
 import type {course, getCourseResult} from "@/stores/type/courseInfoType.ts";
 
@@ -66,6 +66,7 @@ defineOptions({
  })
 const {updateGrades}=defineProps(['updateGrades'])
 const stuInfoStore = useStuInfoStore();
+const {userInfo} = stuInfoStore.stuInfo;
 const courseList = ref<course[]>([]);
 const filter=reactive<any>({
   semester:"",
@@ -77,7 +78,7 @@ const filter=reactive<any>({
 const gradesForm = ref({})
 getList()
 async function getList(){
-  const res:getCourseResult = await requestCourseList(stuInfoStore.stuInfo.class_name)
+  const res:getCourseResult = await requestCourseList(userInfo.class_name)
   console.log('sb',res)
   courseList.value=res.courseList
 }

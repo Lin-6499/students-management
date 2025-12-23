@@ -1,5 +1,4 @@
 import axios from "axios";
-import {ElMessage} from "element-plus";
 import {useStuInfoStore} from "@/stores/useStuInfoStore.ts";
 
 const request = axios.create({

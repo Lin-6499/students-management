@@ -8,10 +8,10 @@ import {requestLogin,requestLogout,requestInfo} from "@/api/baseAPI";
 import {resetRouter} from "@/router";
 import {counselorRouters} from "@/router/counselorRouters.ts";
 
-export const useStuInfoStore = defineStore('StuInfo', () => {
+export const useCslInfoStore = defineStore('CslInfo', () => {
   const router = useRouter();
   const routerList =ref([]);
-  const stuInfo=ref<StuInfoData>({
+  const cslInfo=ref<StuInfoData>({
     userInfo:{
       id: 0,
       user_id: 0,

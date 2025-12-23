@@ -5,19 +5,19 @@
   </el-card>
   <el-card class="stu-card">
     <el-row :gutter="0" style="width: 100%;display: flex;align-items: center">
-      <el-col span="4"><img :src="info.avatar" alt="avatar"/></el-col>
+      <el-col span="4"><img :src="userInfo.avatar" alt="avatar"/></el-col>
       <el-col span="20">
         <el-row>
-          <span>{{info.real_name}}</span>
-          <span style="display:flex;font-size: 13px;align-items:flex-end;margin-left:10px;color: darkgrey!important;">{{info.user_id}}</span>
+          <span>{{userInfo.real_name}}</span>
+          <span style="display:flex;font-size: 13px;align-items:flex-end;margin-left:10px;color: darkgrey!important;">{{userInfo.user_id}}</span>
           <span style="display:flex;font-size: 13px;align-items:flex-end;margin-left:10px">
-            {{info.enrollment_year}}——{{info.department}}——{{info.professional}}——{{info.class_name}}
+            {{userInfo.enrollment_year}}——{{userInfo.department}}——{{userInfo.professional}}——{{userInfo.class_name}}
           </span>
         </el-row>
         <el-row style="margin-top: 10px">
           <span style="display: flex;align-items: end"><icon-svg name="circle"/></span>
           <span style="display: flex;align-items:center;font-size: 13px;">已修学分</span>
-          <span style="display: flex;align-items:center;color: black!important;margin-left: 5px;font-size: 12px">{{info.earned_credits}}</span>
+          <span style="display: flex;align-items:center;color: black!important;margin-left: 5px;font-size: 12px">{{userInfo.earned_credits}}</span>
         </el-row>
       </el-col>
     </el-row>
@@ -61,16 +61,15 @@
 </template>
 
 <script setup lang="ts">
-import {ref, computed, watch, reactive} from 'vue'
+import {ref, watch} from 'vue'
 import {clock} from "@/utils/clock.ts";
 import {useStuInfoStore} from "@/stores/useStuInfoStore.ts";
 import IconSvg from "@/access/svg.vue";
-import type {CheckboxValueType} from "element-plus";
 import {useCourseStore} from "@/stores/useCourseStore.ts";
 import {academicYear} from "@/utils/usually.ts";
 
 const time = ref(clock())
-const info = useStuInfoStore().stuInfo
+const {userInfo} = useStuInfoStore().stuInfo
 const courseStore = useCourseStore()
 const weekTime=ref<number>(1)
 const semester=ref<string>("2024-2025-1")
@@ -80,7 +79,7 @@ loadSchedule();
 
 async function loadSchedule() {
   try {
-    const data = await courseStore.getSchedule({
+    const data = await courseStore.getStudentsSchedule({
       weekTime: weekTime.value,
       semester: semester.value
     });
