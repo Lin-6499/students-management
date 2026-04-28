@@ -2,7 +2,7 @@ import axios from "axios";
 import {useStuInfoStore} from "@/stores/useStuInfoStore.ts";
 
 const request = axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL,
+  baseURL: import.meta.env.VITE_BASE_SERVE,
   timeout: 5000,
 })
 
