@@ -70,10 +70,10 @@ export const useCslInfoStore = defineStore('CslInfo', () => {
     console.log("获取用户信息")
     const result:StuInfoData = await requestInfo();
     // routerList.value = filterRoutesByRole(createRoutes,result.userInfo.role_type)
-    stuInfo.value.userInfo={...stuInfo.value.userInfo,...result.userInfo}
-    stuInfo.value.counselorInfo={...stuInfo.value.counselorInfo,...result.counselorInfo}
+    cslInfo.value.userInfo={...cslInfo.value.userInfo,...result.userInfo}
+    cslInfo.value.counselorInfo={...cslInfo.value.counselorInfo,...result.counselorInfo}
     resetRouter()
-    const {role_type}=stuInfo.value.userInfo
+    const {role_type}=cslInfo.value.userInfo
     console.log('角色类型',role_type)
     let routesToUse: any[] = [];
     if (role_type=="student"){
@@ -95,13 +95,13 @@ export const useCslInfoStore = defineStore('CslInfo', () => {
     const result: any = await requestLogout()
     localStorage.removeItem('token')
     token.value=localStorage.getItem('token');
-    stuInfo.value.userInfo.username="";
+    cslInfo.value.userInfo.username="";
     if (result) {
       await router.push({ path: '/login' });
     }
   }
 
 
-  return {token,stuInfo,userLogin,getStuInfo,userLogout,routerList,counselorInfo}
+  return {token,cslInfo,userLogin,getStuInfo,userLogout,routerList,counselorInfo}
 })
 
