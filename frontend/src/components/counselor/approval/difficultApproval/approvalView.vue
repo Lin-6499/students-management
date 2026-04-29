@@ -52,7 +52,7 @@ defineOptions({
 })
 const fileList = computed(() => {
   const urls = JSON.parse(showInfo.proof_files || '[]') as string[]
-  return urls.map(item => "http://localhost:3001"+item )
+  return urls.map(item => import.meta.env.VITE_ACCESS_URL+item )
 })
 const nowDate = ()=>{
   return (new Date().getFullYear())+'-'+(new Date().getMonth()+1)+'-'+(new Date().getDate())+' '+(new Date().getHours())+':'+(new Date().getMinutes())+':'+(new Date().getSeconds())

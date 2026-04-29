@@ -69,6 +69,9 @@ export const useCslInfoStore = defineStore('CslInfo', () => {
   async function getStuInfo(){
     console.log("获取用户信息")
     const result:StuInfoData = await requestInfo();
+    if (result.userInfo.avatar) {
+      result.userInfo.avatar = import.meta.env.VITE_ACCESS_URL + result.userInfo.avatar;
+    }
     // routerList.value = filterRoutesByRole(createRoutes,result.userInfo.role_type)
     cslInfo.value.userInfo={...cslInfo.value.userInfo,...result.userInfo}
     cslInfo.value.counselorInfo={...cslInfo.value.counselorInfo,...result.counselorInfo}

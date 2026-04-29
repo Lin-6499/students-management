@@ -69,6 +69,9 @@ export const useStuInfoStore = defineStore('StuInfo', () => {
   async function getStuInfo(){
     console.log("获取用户信息")
     const result:StuInfoData = await requestInfo();
+    if (result.userInfo.avatar) {
+      result.userInfo.avatar = import.meta.env.VITE_ACCESS_URL + result.userInfo.avatar;
+    }
     // routerList.value = filterRoutesByRole(createRoutes,result.userInfo.role_type)
     stuInfo.value.userInfo={...stuInfo.value.userInfo,...result.userInfo}
     stuInfo.value.counselorInfo={...stuInfo.value.counselorInfo,...result.counselorInfo}
