@@ -28,10 +28,9 @@ export default defineConfig(({command, mode})=>{
       port: 5173,
       proxy: {
         [env.VITE_BASE_URL]: {
-          //获取数据的服务器地址设置
           target: env.VITE_BASE_SERVE,
-          //需要代理跨域
           changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, '')
         },
         [env.VITE_ACCESS_URL]: {
           //获取服务器资源
